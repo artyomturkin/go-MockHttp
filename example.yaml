@@ -1,0 +1,56 @@
+/hello:
+  POST:
+  - select:
+      in: query
+      key: Test
+      value: test
+    response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: | 
+        {
+          "test":"test"
+        }
+  - select:
+      in: header
+      key: Test
+      value: test
+    response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: | 
+        {
+          "test":"test2"
+        }
+/hello/world:
+  POST:
+  - select:
+      in: query
+      key: Test
+      value: test
+    response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: | 
+        {
+          "test":"test"
+        }
+  - select:
+      in: header
+      key: Test
+      value: test
+    response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: | 
+        {
+          "test":"test2"
+        }
