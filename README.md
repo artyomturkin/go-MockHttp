@@ -2,7 +2,9 @@
 Http server that mocks http responses
 
 ## Usage example
-Have example.yaml file in current directory
+Have example.yaml file in current directory with content:
+
+Catch http://{server}/hello?test=test
 
 ```yaml
 /hello:
@@ -17,6 +19,42 @@ Have example.yaml file in current directory
         Content-Type:
         - application/json
       body: | 
+        {
+          "test":"test"
+        }
+```
+
+or catch http://{server} with header test:test
+
+```yaml
+/:
+  GET:
+  - select:
+      in: header
+      key: test
+      value: test
+    response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: |
+        {
+          "test":"test"
+        }
+```
+
+or catch all http://{server}/hello/world
+
+```yaml
+/hello/world:
+  GET:
+  - response:
+      code: 200
+      headers:
+        Content-Type:
+        - application/json
+      body: |
         {
           "test":"test"
         }
